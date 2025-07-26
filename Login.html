@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Optional: Better background image handling for older browsers */
+    body {
+      background-image: url('nature.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-900 bg-opacity-70 backdrop-blur">
+
+  <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Login Form</h1>
+
+    <form id="LoginForm">
+      <input 
+        type="text" 
+        placeholder="Username"
+        class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <input 
+        type="password" 
+        placeholder="Password"
+        class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <div class="flex items-center justify-between text-sm mb-4">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="form-checkbox" />
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="text-blue-600 hover:underline">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200">
+        Login
+      </button>
+
+      <div class="text-center mt-4 text-sm">
+        <span>Not a member?</span>
+        <a href="#" class="text-blue-600 hover:underline">Signup now</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Redirect on successful login
+    document.getElementById("LoginForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Stop form from reloading
+      // Redirect to the registration page
+      window.location.href = "register.html"; // replace with actual filename
+    });
+  </script>
+</body>
+</html>

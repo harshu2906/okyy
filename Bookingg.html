@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel MH-04</title>
+</head>
+<body>
+    <div>
+        <h1>Hotel MH-04</h1>
+        <a>Made with &#x2665; by India</a>
+        <h2>Welcome To Hotel MH-04</h2>
+        <p>Experience taste of beautiful food.</p>
+
+        <div class="login">
+            <h2>Booking Form</h2>
+            <form id="bookingForm">
+                <p>Full Name:
+                    <input id="fullName" type="text" placeholder="Username" required>
+                </p>
+
+                <p>Check-in Date:
+                    <input id="checkIn" type="date" required>
+                </p>
+
+                <p>Check-Out Date:
+                    <input id="checkOut" type="date" required>
+                </p>
+
+                <p>Food Type:
+                    <select id="foodType" required>
+                        <option value="">-- Select --</option>
+                        <option>Biryani & Khichdi</option>
+                        <option>Curries with meat</option>
+                        <option>Breads like Naan & Roti</option>
+                        <option>Snacks like Samosa & Chaat</option>
+                        <option>Sweets like Gulab Jamun</option>
+                    </select>
+                </p>
+
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <p>Contact us at contact@hotelMH-04.com | 123-456-7890</p>
+        <p>&copy; 2025 Hotel MH-04</p>
+    </footer>
+
+    <script>
+        // Set minimum check-in date to today
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("checkIn").setAttribute("min", today);
+
+        // Update check-out min date when check-in changes
+        document.getElementById("checkIn").addEventListener("change", function () {
+            const checkInDate = this.value;
+            document.getElementById("checkOut").setAttribute("min", checkInDate);
+        });
+
+        // Handle form submission
+        document.getElementById("bookingForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent page reload
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const checkIn = document.getElementById("checkIn").value;
+            const checkOut = document.getElementById("checkOut").value;
+            const food = document.getElementById("foodType").value;
+
+            if (!fullName || !checkIn || !checkOut || !food) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            if (new Date(checkOut) <= new Date(checkIn)) {
+                alert("Check-out date must be after check-in date.");
+                return;
+            }
+
+            // Booking confirmation
+           alert(`Thank you,${fullName}! Your booking from ${checkIn}to ${checkOut}
+           with food preference "${food}" has been confirmed.`);
+
+            // Optionally reset form
+            this.reset();
+        });
+    </script>
+</body>
+
+<style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f2f2f2;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+    }
+
+    div {
+        max-width: 700px;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #2980b9;
+        margin: 20px 0 10px;
+    }
+
+    .login p {
+        margin: 10px 0;
+    }
+
+    .login input,
+    .login select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #219150;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #555;
+        font-size: 0.9em;
+    }
+</style>
+</html>
